@@ -1,0 +1,24 @@
+name: 'Autodeploy on main'
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  sshconnect:
+    name: Remote deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_SERVER_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          passphrase: ${{ secrets.SSH_PASS }}
+          key: ${{ secrets.SSH_SERVER_PKEY }}
+          port: ${{ secrets.SSH_SERVER_PORT }}
+          script_stop: true
+          script: |
+            cd dev
+

@@ -24,14 +24,14 @@ function App(): JSX.Element {
   }, [])
 
     async function fetchProducts(){
-        const {data} = await axios.get('http://18.195.30.50:80/products')
+        const {data} = await axios.get(`http://${process.env.REACT_APP_BACKEND_HOST}/products`)
         if(data){
             setProducts(data)
         }
     }
     async function handleOnSubmit(data: any){
         console.log(data)
-        await axios.post('http://18.195.30.50:80/product', data)
+        await axios.post(`http://${process.env.REACT_APP_BACKEND_HOST}/product`, data)
         await fetchProducts()
     }
 
