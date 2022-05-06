@@ -54,7 +54,7 @@ function App(): JSX.Element {
                   </div>
                   <button type="submit" title="Add product">Add product</button>
                   <br/>
-                  <button onClick={handleOnRemoveAll} title="Add product">Remove all products</button>
+                  <button onClick={() => handleOnRemoveAll()} title="Add product">Remove all products</button>
               </form>
           </div>
 
