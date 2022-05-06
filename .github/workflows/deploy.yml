@@ -7,7 +7,7 @@ on:
 
 jobs:
   sshconnect:
-    name: Remote deploy
+    name: Remote deploy frontend
     runs-on: ubuntu-latest
     steps:
       - name: executing remote ssh commands using password
