@@ -35,6 +35,11 @@ function App(): JSX.Element {
         await fetchProducts()
     }
 
+    async function handleOnRemoveAll(){
+        await axios.delete(`http://${process.env.REACT_APP_BACKEND_HOST}/products`)
+        await fetchProducts()
+    }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -48,6 +53,8 @@ function App(): JSX.Element {
                     <input title="Price" type="text" {...register('price')} />
                   </div>
                   <button type="submit" title="Add product">Add product</button>
+                  <br/>
+                  <button onClick={handleOnRemoveAll} title="Add product">Remove all</button>
               </form>
           </div>
 
