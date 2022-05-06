@@ -35,10 +35,15 @@ function App(): JSX.Element {
         await fetchProducts()
     }
 
+    async function handleOnRemoveAll(){
+        await axios.delete(`http://${process.env.REACT_APP_BACKEND_HOST}/products`)
+        await fetchProducts()
+    }
+
   return (
     <div className="App">
       <header className="App-header">
-          <h3>Product List</h3>
+          <h3>List of products!!!</h3>
           <div>
               <form onSubmit={handleSubmit(handleOnSubmit)}>
                   <div>
@@ -48,6 +53,8 @@ function App(): JSX.Element {
                     <input title="Price" type="text" {...register('price')} />
                   </div>
                   <button type="submit" title="Add product">Add product</button>
+                  <br/>
+                  <button onClick={handleOnRemoveAll} title="Add product">Remove all products</button>
               </form>
           </div>
 
