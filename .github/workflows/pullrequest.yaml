@@ -1,0 +1,23 @@
+name: "Auto create Pull request to main"
+
+on:
+  push:
+    branches:
+      - 'staging'
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
+        with:
+          github_token: ${{ secrets.PAT }}
+          source_branch: "staging"
+          destination_branch: "main"
+          pr_title: "[Merge request]: ${{ github.ref }} into main"
+          pr_body: "*This is Pull request created automatically because of new commits in Staging branch.*"
+          pr_label: "merge-main"
+          pr_draft: false
+          pr_allow_empty: false                      # Creates pull request even if there are no changes
