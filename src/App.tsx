@@ -43,7 +43,8 @@ function App(): JSX.Element {
   return (
     <div className="App">
       <header className="App-header">
-          <h3>List of products!!!</h3>
+          <h3>List of products</h3>
+          <h4>[Feature deployment is enabled]</h4>
           <div>
               <form onSubmit={handleSubmit(handleOnSubmit)}>
                   <div>
