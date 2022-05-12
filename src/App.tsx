@@ -44,6 +44,8 @@ function App(): JSX.Element {
     <div className="App">
       <header className="App-header">
           <h3>List of products!!!</h3>
+          <h3>List of products!!</h3>
+          <h3>List of products!</h3>
           <div>
               <form onSubmit={handleSubmit(handleOnSubmit)}>
                   <div>
