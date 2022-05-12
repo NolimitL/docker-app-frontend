@@ -1,0 +1,25 @@
+name: 'Deploy feature branch to public access'
+
+on:
+  pull_request:
+    types:
+      - labeled
+    branches: ['dev','CU-**']
+
+jobs:
+  feature-deploy:
+    if: ${{ github.event.label.name == 'feature' && github.event.pull_request.draft == true }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Connecting to remote dev
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_DEV_SERVER_HOST }}
+          username: ${{ secrets.SSH_DEV_USER }}
+          passphrase: ${{ secrets.SSH_DEV_PASS }}
+          key: ${{ secrets.SSH_DEV_SERVER_PKEY }}
+          port: ${{ secrets.SSH_DEV_SERVER_PORT }}
+          script_stop: true
+          script: |
+            cd dev
+            ./deploy-dev.sh ${{github.head_ref}}
