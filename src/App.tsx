@@ -44,7 +44,7 @@ function App(): JSX.Element {
     <div className="App">
       <header className="App-header">
           <h3>List of products!!!</h3>
-          <h4>[Tur branch with feature]</h4>
+          <h4>Hello</h4>
           <div>
               <form onSubmit={handleSubmit(handleOnSubmit)}>
                   <div>
